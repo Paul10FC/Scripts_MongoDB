@@ -1,0 +1,19 @@
+use("platzi_store")
+
+// Update one product
+db.products.updateOne(
+    // query 
+    {_id: 2},
+    // change => operators 
+    {
+        // The update operator
+        // If we don´t have the attribute, it will be created
+        $set: {
+            name:"Changed name",
+            price:20,
+            tags:['A', 'B', 'C']
+        }
+    }
+)
+
+db.products.find()

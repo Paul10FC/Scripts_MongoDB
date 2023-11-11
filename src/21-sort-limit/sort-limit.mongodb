@@ -1,0 +1,17 @@
+use("sample_training")
+
+// 1 ASC
+// -1 DESC
+db.zips
+.find(
+     { pop: { $gt: 10000 } }, 
+     { pop: 1, city: 1, _id:0} )
+.sort( { pop: 1 } )
+.limit(2)
+
+use("platzi_store")
+db.categories
+.find( { } )
+.sort({ _id: -1})
+.limit( 3 )
+.skip(3)

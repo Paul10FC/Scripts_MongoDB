@@ -1,0 +1,19 @@
+use("platzi_store")
+
+// tell me the documents where the spent is greather
+db.monthlyBudget.find({
+    $expr: {
+        $gte: ["$spent", "$budget"]
+    }
+})
+
+// trips
+use("sample_training")
+db.trips.find({
+    $expr: {
+        $and: [
+        { $eq: ["$start station id", "$end station id"] },
+        { $gte:["$tripduration", 1200] }
+        ]
+    }
+}).count()

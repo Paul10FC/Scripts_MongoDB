@@ -1,0 +1,39 @@
+use("sample_training")
+
+// and implicit
+db.inspections.find({
+   sector: "Tax Preparers - 891",
+   result: "Unable to Locate"
+}).count()
+
+// and explicit
+// $and [{}, {}, {}]
+db.inspections.find({
+   $and: [
+       { sector: "Tax Preparers - 891" },
+       { result: "Unable to Locate" }
+   ]
+}).count()
+
+// $or [{},{},{}]
+db.inspections.find({
+   $or: [
+       { sector: "Tax Preparers - 891" },
+       { result: "Unable to Locate" }
+   ]
+}).count()
+
+// $nor [{},{},{}]
+// documents not include...
+db.inspections.find({
+    $nor: [
+        { sector: "Tax Preparers - 891" },
+        { result: "Unable to Locate" }
+    ]
+ }).count()
+
+// $not = {}
+// bring all the documents that don't have this expression
+db.inspections.find({
+    result: { $not: { $regex: /"unable to locate"/i } }
+})

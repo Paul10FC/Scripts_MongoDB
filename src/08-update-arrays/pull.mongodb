@@ -1,0 +1,15 @@
+use("platzi_store")
+
+db.inventory.updateMany(
+    // empty query means bring all data
+    {}, 
+    
+    // Update
+    {
+        //Remove the 'book' and 'school' values from all array tags
+        $pull: {
+            tags: {
+                $in: ["book", "school"]
+            }
+    }
+})

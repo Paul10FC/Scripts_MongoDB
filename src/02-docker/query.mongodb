@@ -1,0 +1,5 @@
+// This is the database to use
+use("platzi_store")
+
+// in the db we are going to find all the products
+db.products.find()

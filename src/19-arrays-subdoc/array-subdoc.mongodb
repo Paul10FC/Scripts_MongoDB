@@ -1,0 +1,21 @@
+use("sample_training")
+
+// where the ceo is paul
+db.companies.find({
+    "relationships.0.person.first_name":"Paul"
+}, {
+    name:1,
+    relationships:1
+}).count()
+
+// where one person is paul
+db.companies.find({
+    relationships: {
+        $elemMatch:{
+            "person.first_name": "Paul"
+        }
+    }
+}, {
+    name:1,
+    relationships:1
+}).count()

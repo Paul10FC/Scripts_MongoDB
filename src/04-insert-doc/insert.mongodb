@@ -1,0 +1,21 @@
+// Crea la base de datos si no existe y usala
+// De lo contrario usala solamente
+use("platzi_store")
+
+// Si no existe la collection, la creas y la usas
+// De lo contrario solo la usas
+
+// Insert many
+db.products.insertMany([
+    {"name":"product3", "price":100},
+    {"name":"product4", "price":0}
+])
+
+//Insert one
+db.products.insertOne({
+    "name":"milk",
+    "price":23
+})
+
+// find all products
+db.products.find()

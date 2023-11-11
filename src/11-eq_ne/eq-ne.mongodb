@@ -1,0 +1,15 @@
+use("platzi_store")
+
+//$eq
+// This is an equal operator 
+db.inventory.find({ qty: 20})
+
+// is an implicit operator
+// it's the same that:
+db.inventory.find(qty: {$eq: 20 })
+
+// When is a consult in a subdocument, we use the quotation marks ("") and point (.) 
+db.inventory.find({ "item.code": "123"})
+
+// Using $ne
+db.inventory.find({ qty: { $ne: 20} })

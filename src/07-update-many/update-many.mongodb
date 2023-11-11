@@ -1,0 +1,16 @@
+use("sample_training")
+
+db.zips.find({ city:"CLEVELAND"})
+
+db.zips.updateMany(
+    // Query - Operators
+    { city:"CLEVELAND" },
+    // Update
+    {
+        $inc: {
+            pop:1000
+        }
+    }
+)
+
+db.zips.find({ city:"CLEVELAND" })

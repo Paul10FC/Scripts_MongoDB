@@ -1,0 +1,39 @@
+use("platzi_store")
+
+// $in 
+// the "in" operator is used to values and arrays
+//bring me documents...
+
+// VALUE
+// that contains 20 or 25
+db.inventory.find({ qty: { $in: [20, 25] } })
+
+// ARRAY
+// that contains a book or electronics in his array tag
+db.inventory.find({ tags: { $in: ["book", "electronics"] } })
+
+// VALUE
+// where not contains the 20 or 25 numbers in qty
+db.inventory.find({ qty: { $nin: [20, 25] } })
+
+// ONLY USED FOR ARRAYS
+
+// find me this in the same order
+db.inventory.find({ tags: ["school", "book"] })
+
+// $all
+// contains this, order doesn't matter
+db.inventory.find({ tags: { $all: ["book", "school"] } })
+
+// $size
+// contains a quantity of elements
+db.inventory.find({ tags: {$size: 2 } })
+
+// $elementMatch
+// Search documents with search critery
+db.survey.find({ 
+    results: 
+    { $elementMatch: 
+        { product: "xyz", score: { $gt: 5} }
+    }
+})

@@ -1,0 +1,12 @@
+use("platzi_store")
+
+// Find by text
+// db.inventory.find({ "item.description": "Single line description" })
+
+// Find by regular expression
+// If the text contain the word (/word/)
+// Not sensitive case (i)
+// End with this (word$)
+// Init with this (^word)
+// Find by multiline (m)
+db.inventory.find({"item.description": { $regex: /line$/im } })

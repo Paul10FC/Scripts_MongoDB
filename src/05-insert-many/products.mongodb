@@ -1,0 +1,36 @@
+// Usar la db de platzi_store
+use("platzi_store")
+
+// Eliminas todo lo que tenga la colección
+db.products.drop()
+
+// Al insertar varios productos se introducen con la notación de array "[]"
+db.products.insertMany([
+    {
+        _id:1,
+        "name":"Milk",
+        "price":23
+    },
+    {
+        _id:2,
+        "name":"Té",
+        "price":10
+    },
+    {
+        _id:2,
+        "name":"Carlos v",
+        "price":3
+    },
+    {
+        "name":"Milk2",
+        "price":22
+    }
+],{
+    // Indicamos que no importa el orden
+    // Deje afuera los que dan error
+    // de lo contrario se detendrá donde
+    // está el error
+    ordered:false
+})
+
+db.products.find()
